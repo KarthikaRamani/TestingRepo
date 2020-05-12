@@ -3,5 +3,5 @@ steps:
     entrypoint: 'mvn'
     args: ['clean', 'install', '-DskipTests']
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/realtimescoring/hello-java-2', '.']
-images: ['gcr.io/realtimescoring/hello-java-2']
+    args: ['build', '-t', 'gcr.io/realtimescoring/hello-java-3', '.']
+images: ['gcr.io/realtimescoring/hello-java-3']
