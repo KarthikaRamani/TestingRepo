@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: first-service
+  name: first-service
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: first-service
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: first-service
+    spec:
+      containers:
+        - image: gcr.io/realtimescoring/github_karthikaramani_testingrepo
+          imagePullPolicy: IfNotPresent
+          name: hello-java-3-sha256-1
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  labels:
+    app: first-service
+  name: first-service-hpa-r2zx
+  namespace: default
+spec:
+  maxReplicas: 5
+  metrics:
+    - resource:
+        name: cpu
+        targetAverageUtilization: 80
+      type: Resource
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: first-service
