@@ -60,7 +60,7 @@ substitutions:
   _K8S_NAMESPACE: default
   _GKE_LOCATION: us-central1-c
   _GKE_CLUSTER: cluster-1
-  _IMAGE_NAME: gcr.io/realtimescoring/github_karthikaramani_testingrepo
+  _IMAGE_NAME: gcr.io/realtimescoring/docimage-created
   _K8S_ANNOTATIONS: gcb-trigger-id=3dcd2a9b-9c07-454d-bb3a-71f3648345e4
   _DOCKERFILE_NAME: Dockerfile
   _K8S_YAML_PATH:
