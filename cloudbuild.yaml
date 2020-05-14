@@ -1,0 +1,13 @@
+steps:
+  - name: gcr.io/realtimescoring/mymavengcpcloudbuild
+    entrypoint: 'mvn'
+    args: ['clean', 'install', '-DskipTests']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/realtimescoring/hello-java-3', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/realtimescoring/hello-java-3']
+  - name: 'gcr.io/cloud-builders/kubectl'
+    args: ['set', 'image', 'deployment/my-deployment', 'my-container=gcr.io/realtimescoring/hello-java-3']
+    env:
+      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
