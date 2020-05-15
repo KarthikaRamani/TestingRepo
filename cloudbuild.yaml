@@ -54,6 +54,27 @@ steps:
     id: Apply deploy
 images:
   - '$_IMAGE_NAME:$COMMIT_SHA'
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-service
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      run: web-service
+  template:
+    metadata:
+      labels:
+        run: web-service
+    spec:
+      containers:
+      - image: gcr.io/realtimescoring/$_IMAGE_NAME
+        imagePullPolicy: IfNotPresent
+        name: web-service
+        ports:
+        - containerPort: 8080
+          protocol: TCP
 options:
   substitutionOption: ALLOW_LOOSE
 substitutions:
