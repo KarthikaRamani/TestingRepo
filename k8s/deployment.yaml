@@ -13,9 +13,4 @@ spec:
     metadata:
       labels:
         run: pod-name
-    spec:
-      containers:
-      - image: gcr.io/realtimescoring/docimage-created:$COMMIT_SHA
-        name: <app-name>
-        ports:
-        - containerPort: <container-port>
+    
