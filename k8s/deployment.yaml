@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: first-service
+  name: first-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: first-service
+  template:
+    metadata:
+      labels:
+        run: first-service
+    spec:
+      containers:
+      - image: gcr.io/realtimescoring/docimage-created:$COMMIT_SHA
+        name: first-service
+        ports:
+        - containerPort: 80
