@@ -63,7 +63,7 @@ substitutions:
   _IMAGE_NAME: gcr.io/realtimescoring/docimage-created
   _K8S_ANNOTATIONS: gcb-trigger-id=3dcd2a9b-9c07-454d-bb3a-71f3648345e4
   _DOCKERFILE_NAME: Dockerfile
-  _K8S_YAML_PATH: /k8s
+  _K8S_YAML_PATH: k8s/
   _DOCKERFILE_DIR: ''
   _OUTPUT_BUCKET_PATH: realtimescoring_cloudbuild/deploy
   _K8S_LABELS: ''
