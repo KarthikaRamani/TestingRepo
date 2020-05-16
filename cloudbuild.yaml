@@ -15,16 +15,16 @@ steps:
   - name: gcr.io/cloud-builders/docker
     args:
       - push
-      - '$_IMAGE_NAME:latest'
+      - '$_IMAGE_NAME:$COMMIT_SHA'
     id: Push
-- name: 'gcr.io/cloud-builders/kubectl'
-  args: ['apply', '-f', 'k8s/']
-  env:
-  - 'CLOUDSDK_COMPUTE_ZONE=$_GKE_LOCATION'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=$_GKE_CLUSTER'
-  id: manifestfile
-- name: 'gcr.io/cloud-builders/kubectl'
-  args: [
+  - name: 'gcr.io/cloud-builders/kubectl'
+    args: ['apply', '-f', 'k8s/']
+    env:
+      - 'CLOUDSDK_COMPUTE_ZONE=$_GKE_LOCATION'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=$_GKE_CLUSTER'
+   id: manifestfile
+ - name: 'gcr.io/cloud-builders/kubectl'
+   args: [
    'set', 
    'image', 
    'deployment', 
