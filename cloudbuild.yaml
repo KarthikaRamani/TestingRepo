@@ -20,7 +20,7 @@ steps:
   - name: 'gcr.io/cloud-builders/kubectl'
     args: ['apply', '-f', 'k8s/']
     env:
-      - 'CLOUDSDK_COMPUTE_ZONE=$_GKE_CLUSTER''
+      - 'CLOUDSDK_COMPUTE_ZONE=$_GKE_LOCATION'
       - 'CLOUDSDK_CONTAINER_CLUSTER=$_GKE_CLUSTER'
   - name: gcr.io/cloud-builders/gke-deploy
     args:
