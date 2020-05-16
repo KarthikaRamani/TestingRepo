@@ -17,13 +17,12 @@ steps:
       - push
       - '$_IMAGE_NAME:latest'
     id: Push
- #step 3
 - name: 'gcr.io/cloud-builders/kubectl'
   args: ['apply', '-f', 'k8s/']
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=$_GKE_LOCATION'
   - 'CLOUDSDK_CONTAINER_CLUSTER=$_GKE_CLUSTER'
-#step 4
+  id: manifestfile
 - name: 'gcr.io/cloud-builders/kubectl'
   args: [
    'set', 
@@ -35,7 +34,7 @@ steps:
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=$_GKE_LOCATION'
   - 'CLOUDSDK_CONTAINER_CLUSTER=$_GKE_CLUSTER'
-# push images to Google Container Registry with tags
+  id: deploy
 images: [
    '$_IMAGE_NAME:$TAG_NAME',
    '$_IMAGE_NAME:latest'
