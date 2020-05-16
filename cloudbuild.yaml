@@ -22,7 +22,7 @@ steps:
     env:
       - 'CLOUDSDK_COMPUTE_ZONE=$_GKE_LOCATION'
       - 'CLOUDSDK_CONTAINER_CLUSTER=$_GKE_CLUSTER'
-    id: manifestfile
+    
  - name: 'gcr.io/cloud-builders/kubectl'
    args: [
    'set', 
@@ -34,7 +34,7 @@ steps:
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=$_GKE_LOCATION'
   - 'CLOUDSDK_CONTAINER_CLUSTER=$_GKE_CLUSTER'
-   id: deploy
+ 
 images: [
    '$_IMAGE_NAME:$COMMIT_SHA',
    '$_IMAGE_NAME:latest'
