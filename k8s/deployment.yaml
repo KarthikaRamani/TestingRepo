@@ -1,21 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    run: docimage-created
   name: docimage-created
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
-      run: docimage-created
+      app: docimage-created
   template:
     metadata:
       labels:
-        run: docimage-created
+        app: docimage-created
     spec:
       containers:
-      - image: gcr.io/realtimescoring/docimage-created:latest
-        name: docimage-created
+      - name: docimage-created
+        image: nginx:latest
         ports:
         - containerPort: 80
