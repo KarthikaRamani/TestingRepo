@@ -2,20 +2,20 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    run: first-service
-  name: first-service
+    run: docimage-created
+  name: docimage-created
 spec:
   replicas: 2
   selector:
     matchLabels:
-      run: first-service
+      run: docimage-created
   template:
     metadata:
       labels:
-        run: first-service
+        run: docimage-created
     spec:
       containers:
-      - image: gcr.io/realtimescoring/docimage-created:$COMMIT_SHA
+      - image: gcr.io/realtimescoring/docimage-created:latest
         name: first-service
         ports:
         - containerPort: 80

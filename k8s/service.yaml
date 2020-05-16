@@ -1,10 +1,10 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: first-service
+  name: docimage-created
 spec:
   selector:
-     run: first-service
+     run: docimage-created
   ports:
   - protocol: TCP
     port: 80
