@@ -22,21 +22,21 @@ steps:
     env:
       - 'CLOUDSDK_COMPUTE_ZONE=$_GKE_LOCATION'
       - 'CLOUDSDK_CONTAINER_CLUSTER=$_GKE_CLUSTER'
-   id: manifestfile
+    id: manifestfile
  - name: 'gcr.io/cloud-builders/kubectl'
    args: [
    'set', 
    'image', 
    'deployment', 
    'docimage-created', 
-   'docimage-created=$_IMAGE_NAME:latest'
+   'docimage-created=$_IMAGE_NAME:$COMMIT_SHA'
   ]
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=$_GKE_LOCATION'
   - 'CLOUDSDK_CONTAINER_CLUSTER=$_GKE_CLUSTER'
-  id: deploy
+   id: deploy
 images: [
-   '$_IMAGE_NAME:$TAG_NAME',
+   '$_IMAGE_NAME:$COMMIT_SHA',
    '$_IMAGE_NAME:latest'
   ]
 options:
