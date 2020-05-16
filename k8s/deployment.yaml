@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: docimage-created
-        image: nginx:latest
+        image: docimage-created:latest
         ports:
         - containerPort: 80
