@@ -7,6 +7,8 @@ steps:
       - build
       - '-t'
       - '$_IMAGE_NAME:$COMMIT_SHA'
+      - '-t'
+      - '$_IMAGE_NAME:latest''
       - .
       - '-f'
       - $_DOCKERFILE_NAME
