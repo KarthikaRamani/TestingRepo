@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: docimage-created
-        image: docimage-created:latest
+        image: gcr.io/realtimescoring/docimage-created:latest
         ports:
         - containerPort: 80
