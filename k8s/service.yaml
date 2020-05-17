@@ -1,7 +1,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: docimage-created
+  name: docimage-created-service-yam
 spec:
   selector:
      run: docimage-created
