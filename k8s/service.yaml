@@ -1,12 +1,14 @@
-kind: Service
-apiVersion: v1
+kind: "Service"
 metadata:
-  name: docimage-created-service-yam
+  name: "docimage-created-service-yaml"
+  namespace: "default"
+  labels:
+    app: "docimage-created"
 spec:
-  selector:
-     run: docimage-created
   ports:
-  - protocol: TCP
+  - protocol: "TCP"
     port: 80
-    targetPort: 80
-  type: LoadBalancer
+  selector:
+    app: "docimage-created"
+  type: "LoadBalancer"
+  loadBalancerIP: ""
